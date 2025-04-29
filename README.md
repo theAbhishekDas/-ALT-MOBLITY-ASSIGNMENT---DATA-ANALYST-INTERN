@@ -1,3 +1,25 @@
+# 📊 Customer Orders & Payments Data Analysis using SQL
+
+This repository provides a structured SQL-based approach to analyze customer order behaviors and payment performance. It delivers valuable business insights across sales, customer lifecycle, and financial operations, suitable for stakeholder reporting or executive dashboards.
+
+---
+
+## 📁 Repository Structure
+
+```
+📦 -ALT-MOBLITY-ASSIGNMENT---DATA-ANALYST-INTERN
+ ┣ 📁 data/
+ ┃ ┣ 📄 customer_orders.csv
+ ┃ ┗ 📄 payments.csv
+ ┣ 📁 queries/
+ ┃ ┣ 📄 1_order_sales_analysis.txt
+ ┃ ┣ 📄 2_customer_analysis.txt
+ ┃ ┣ 📄 3_payment_status_analysis.txt
+ ┃ ┗ 📄 4_order_details_report.docx
+ ┣ 📁 reports/
+ ┃ ┗ 📄 powerbi_dashboard.pbix (optional)
+ ┗ 📄 README.md
+```
 
 ---
 
@@ -49,7 +71,7 @@
 - Monthly revenue trends and growth rates  
 - Average order value by status
 
-📄 [`1_order_sales_analysis.sql`](queries/1_order_sales_analysis.sql)
+📄 [`1_order_sales_analysis.txt`](queries/1_order_sales_analysis.txt)
 
 ---
 
@@ -59,7 +81,7 @@
 - Monthly new customers  
 - Split between new vs. returning customers
 
-📄 [`2_customer_analysis.sql`](queries/2_customer_analysis.sql)
+📄 [`2_customer_analysis.txt`](queries/2_customer_analysis.txt)
 
 ---
 
@@ -69,7 +91,7 @@
 - Monthly payment failure rate  
 - Average time between order and payment by status
 
-📄 [`3_payment_status_analysis.sql`](queries/3_payment_status_analysis.sql)
+📄 [`3_payment_status_analysis.txt`](queries/3_payment_status_analysis.txt)
 
 ---
 
@@ -78,7 +100,7 @@
 - One-row-per-order with payment summary  
 - All payment attempts per order (for audit)
 
-📄 [`4_order_details_report.sql`](queries/4_order_details_report.sql)
+📄 [`4_order_details_report.docx`](queries/4_order_details_report.docx)
 
 ---
 
@@ -120,9 +142,9 @@
 ## 👨‍💻 Author
 
 **Abhishek Das**  
-📍 Data Analyst | SQL | Python | Power BI  
-📫 Email: theabhishekdas09@gmail.com  
-🔗 [LinkedIn](https://linkedin.com/in/your-link) | [GitHub](https://github.com/your-profile)
+📌 Data Analyst | SQL | Python | Power BI  
+✉️ Email: theabhishekdas09@gmail.com  
+🌐 [LinkedIn](https://www.linkedin.com/in/abhishekdas09/) | [GitHub](https://github.com/theAbhishekDas) | [Portfolio](https://portfolio-abhishek-das.netlify.app/)
 
 ---
 
