@@ -1,0 +1,46 @@
+----------------------------------------------------------
+2. Customer Analysis
+----------------------------------------------------------
+----------------------------------------------------------
+a) Top customers by order count & spend
+----------------------------------------------------------
+-  SELECT
+  	customer_id,
+  	COUNT(*)          AS order_count,
+  	SUM(order_amount) AS total_spent,
+  	MIN(order_date)   AS first_order,
+  	MAX(order_date)   AS last_order
+   FROM customer_orders
+   GROUP BY customer_id
+   ORDER BY order_count DESC
+   LIMIT 20;
+
+----------------------------------------------------------
+b) Unique customers acquired each month
+----------------------------------------------------------
+-  SELECT
+  	DATE_TRUNC('month', order_date) AS month,
+  	COUNT(DISTINCT customer_id)     AS new_customers
+   FROM customer_orders
+   GROUP BY 1
+   ORDER BY 1;
+
+----------------------------------------------------------
+c) New vs. returning orders by month
+----------------------------------------------------------
+-  WITH first_order AS (
+  	SELECT
+    	   customer_id,
+   	   MIN(order_date) AS first_date
+  	   FROM customer_orders
+  	   GROUP BY customer_id
+   )
+   SELECT
+  	DATE_TRUNC('month', o.order_date) AS month,
+ 	SUM(CASE WHEN o.order_date = f.first_date THEN 1 ELSE 0 END) AS new_orders,
+  	SUM(CASE WHEN o.order_date >  f.first_date THEN 1 ELSE 0 END) AS returning_orders
+   FROM customer_orders o
+   JOIN first_order f
+   ON o.customer_id = f.customer_id
+   GROUP BY 1
+   ORDER BY 1;

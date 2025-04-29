@@ -1,0 +1,41 @@
+----------------------------------------------------------
+3. Payment Status Analysis
+----------------------------------------------------------
+----------------------------------------------------------
+a) Overall payment‐status breakdown  
+----------------------------------------------------------
+-  SELECT
+  	payment_status,
+  	COUNT(*)           AS txn_count,
+  	SUM(payment_amount) AS total_amount
+   FROM payments
+   GROUP BY payment_status;
+
+----------------------------------------------------------
+b) Payment failure rate over time
+----------------------------------------------------------
+-  SELECT
+ 	DATE_TRUNC('month', payment_date) AS month,
+  	COUNT(*)                              AS total_txns,
+  	SUM(CASE WHEN payment_status = 'failed' THEN 1 ELSE 0 END) AS failed_txns,
+  	ROUND(
+    	SUM(CASE WHEN payment_status = 'failed' THEN 1 ELSE 0 END)
+    	*100.0 / COUNT(*),
+    	2
+  	) AS failure_rate_pct
+   FROM payments
+   GROUP BY 1
+   ORDER BY 1;
+
+----------------------------------------------------------
+c) Time-to-payment by payment outcome
+----------------------------------------------------------
+-  SELECT
+  	p.payment_status,
+  	ROUND(AVG(
+    	DATEDIFF(day, o.order_date, p.payment_date)
+  	), 2) AS avg_days_to_payment
+   FROM payments p
+   JOIN customer_orders o
+     ON p.order_id = o.order_id
+   GROUP BY p.payment_status;
